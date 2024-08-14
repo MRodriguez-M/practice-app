@@ -28,7 +28,7 @@ app.get('/', (request, response) => {
   response.send('<h1>Hello World!</h1>')
 })
 
-app.get('/api/notes', (request, response) => {
+router.get('/api/notes', (request, response) => {
   response.json(notes)
 })
 
@@ -79,9 +79,9 @@ app.post('/api/notes', (request, response) => {
   response.json(note)
 })
 
-router.get("/", (req, res) => {
+/*router.get("/", (req, res) => {
   res.send("App is running..");
-});
+});*/
 app.use("/.netlify/functions/index", router);
 module.exports.handler = serverless(app);
 
