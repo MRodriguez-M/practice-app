@@ -82,7 +82,7 @@ app.post('/api/notes', (request, response) => {
 router.get("/", (req, res) => {
   res.send("App is running..");
 });
-app.use("/.netlify/functions/app", router);
+app.use("/.netlify/functions/index", router);
 module.exports.handler = serverless(app);
 
 const PORT = 3001;
