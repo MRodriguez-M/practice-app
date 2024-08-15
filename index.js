@@ -1,8 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const serverless = require('serverless-http');
 const app = express();
-const router = express.Router();
 
 app.use(cors());
 
@@ -28,7 +26,7 @@ app.get('/', (request, response) => {
   response.send('<h1>Hello World!</h1>')
 })
 
-router.get('/api/notes', (request, response) => {
+app.get('/api/notes', (request, response) => {
   response.json(notes)
 })
 
@@ -79,13 +77,7 @@ app.post('/api/notes', (request, response) => {
   response.json(note)
 })
 
-/*router.get("/", (req, res) => {
-  res.send("App is running..");
-});*/
-app.use("/.netlify/functions/index", router);
-module.exports.handler = serverless(app);
-
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
